@@ -1,18 +1,26 @@
 <template>
-  <div>
-    <div v-for="post in posts" :key="post[0]">
-      <h2>{{'"' + post[0] + '"' }}</h2>
-      <p>{{ post[1] }}</p>
-      <p> Created By: </p>
-      <h4>{{ post[2] }}</h4>
+  <div class="page-container">
+    <div class="post-container" v-for="post in posts" :key="post[0]">
+      <h2>{{ '"' + post[0] + '"' }}</h2>
+      <p> <b>Created By:</b> {{ post[2] }} </p>
+      <p> <b>Time Created:</b> {{ post[1] }} </p>
+      <update-blog-post :blogpost_id="post[3]"> </update-blog-post>
+      <delete-blog-post :blogpost_id="post[3]"> </delete-blog-post>
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import UpdateBlogPost from "./UpdateBlogPost.vue";
+import DeleteBlogPost from "./DeleteBlogPost.vue";
+
 export default {
-  name: "ViewTodoItems",
+  name: "ViewBlogPosts",
+  components: {
+    UpdateBlogPost,
+    DeleteBlogPost
+  },
   mounted() {
     this.getAllPosts();
   },
@@ -40,5 +48,18 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
+.page-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 90%;
+  margin: 5%;
+
+}
+.post-container {
+border: 1px solid black;
+padding: 2vh;
+margin: 10px;
+
+}
 </style>

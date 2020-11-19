@@ -1,11 +1,6 @@
 <template>
   <div>
-    <p>Update Content:</p>
-    <textarea v-model="content" placeholder="500 characters max"></textarea>
-    <br />
-    <p>Update name:</p>
-    <input type="text" v-model="created_by" placeholder="20 characters max" /> <br />
-    <button @click="updateBlogPost()">Update Post</button>
+    <button @click="deleteBlogPost()">Delete Post</button>
   </div>
 </template>
 
@@ -13,13 +8,7 @@
 import axios from "axios";
 
 export default {
-  name: "UpdateBlogPost",
-  data() {
-    return {
-      content: "",
-      created_by: "",
-    };
-  },
+  name: "DeleteBlogPost",
 
   props: {
     blogpost_id: {
@@ -29,17 +18,15 @@ export default {
   },
 
   methods: {
-    updateBlogPost: function () {
+    deleteBlogPost: function () {
       axios
         .request({
           url: "http://127.0.0.1:5000/blog",
-          method: "PATCH",
+          method: "DELETE",
           headers: {
             "Content-Type": "application/json",
           },
           data: {
-            content: this.content,
-            created_by: this.created_by,
             id: this.blogpost_id,
           },
         })
@@ -55,12 +42,7 @@ export default {
 </script>
 
 <style scoped>
-button {
-  margin: 10px;
-}
-
-textarea {
-  height: 5vh;
-  width: 30vw;
+div {
+  margin: 5px;
 }
 </style>

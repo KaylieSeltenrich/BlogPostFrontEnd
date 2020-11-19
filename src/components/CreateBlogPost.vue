@@ -1,11 +1,11 @@
 <template>
   <div>
-    <p>Blog Content:</p>
+    <h1>Blog Content:</h1>
     <textarea v-model="content" placeholder="500 characters max"></textarea>
     <br />
     <p>Enter your name:</p>
-    <input type="text" v-model="created_by" /> <br/>
-    <button @click="createBlogPost()"> Create Post </button>
+    <input type="text" v-model="created_by" placeholder="20 characters max" /> <br />
+    <button @click="createBlogPost()">Create Post</button>
   </div>
 </template>
 
@@ -13,6 +13,8 @@
 import axios from "axios";
 
 export default {
+  name: "CreateBlogPost",
+
   data() {
     return {
       content: "",
@@ -45,4 +47,23 @@ export default {
 </script>
 
 <style scoped>
+button {
+  margin: 15px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+textarea {
+  height: 20vh;
+  width: 65vw;
+  padding: 20px;
+  font-size: 1.2em;
+}
+
+input {
+ height: 3vh;
+ width: 20vw;
+ padding: 5px;
+ font-size: 1em;
+}
 </style>
