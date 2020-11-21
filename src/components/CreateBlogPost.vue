@@ -25,7 +25,7 @@ export default {
     createBlogPost: function () {
       axios
         .request({
-          url: "http://127.0.0.1:5000/blog",
+          url: "http://kayliesblogsite.ml/api/blog",
           method: "POST",
           headers: {
             "Content-Type": "application/json",
